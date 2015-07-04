@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name angularToDoApp
- * @description
- * # angularToDoApp
- *
- * Main module of the application.
- */
 angular
   .module('angularToDoApp', [
     'ngAnimate',
@@ -15,7 +7,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+      'ui.sortable'
   ])
   .config(function ($routeProvider) {
     $routeProvider
