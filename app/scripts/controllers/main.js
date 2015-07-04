@@ -2,7 +2,7 @@
 
 
 angular.module('angularToDoApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $location, $firebaseArray) {
       //firebase Constant URL
       var url ="https://anotherthingtodo.firebaseio.com/todos";
       var fireRef = new Firebase(url);

@@ -1,22 +1,41 @@
-<div class="container">
-    <h2>{{username}}</h2>
-
-    <form role="form" ng-submit="addTodo()">
-        <div class="row">
-            <div class="input-group">
-                <input type="text" ng-model="todo" placeholder="Enter new todo">
-                <span   class="input-group-btn">
-                    <input type="submit" class="btn btn-primary" value="Add">
-                </span>
-            </div>
-        </div>
-    </form>
-    <div ui-sortable ng-model="todos">
-    <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
-        <input type="text" ng-model="todo" class="form-control">
-        <span class="input-group-btn">
-            <button class="btn btn-danger" ng-click="removeTodo($index)"aria-label="Remove">X</button>
-        </span>
-    </p>
-</div>
-</div>
+<section >
+    <header id="header">
+        <h1>todos</h1>
+        <form id="todo-form" ng-submit="addTodo()">
+            <input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+        </form>
+    </header>
+    <section id="main" ng-show="totalCount" ng-cloak>
+        <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul id="todo-list">
+            <li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+                <div class="view">
+                    <input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(todo)">
+                    <label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+                    <button class="destroy" ng-click="removeTodo(todo)"></button>
+                </div>
+                <form ng-submit="doneEditing(todo)">
+                    <input class="edit" ng-model="todo.title" todo-escape="revertEditing(todo)" todo-blur="doneEditing(todo)" todo-focus="todo == editedTodo">
+                </form>
+            </li>
+        </ul>
+    </section>
+    <footer id="footer" ng-show="totalCount" ng-cloak>
+				<span id="todo-count"><strong>{{remainingCount}}</strong>
+					<ng-pluralize count="remainingCount" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
+				</span>
+        <ul id="filters">
+            <li>
+                <a ng-class="{selected: location.path() == '/'} " href="#/">All</a>
+            </li>
+            <li>
+                <a ng-class="{selected: location.path() == '/active'}" href="#/active">Active</a>
+            </li>
+            <li>
+                <a ng-class="{selected: location.path() == '/completed'}" href="#/completed">Completed</a>
+            </li>
+        </ul>
+        <button id="clear-completed" ng-click="clearCompletedTodos()" ng-show="completedCount">Clear completed</button>
+    </footer>
+</section>

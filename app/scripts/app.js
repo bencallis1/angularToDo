@@ -1,7 +1,6 @@
 'use strict';
 
-angular
-  .module('angularToDoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.sortable',
+var angularToDoApp = angular.module('angularToDoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.sortable',
       "firebase"])
 
     .filter('todoFilter', function ($location) {
