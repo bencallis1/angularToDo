@@ -1,7 +1,7 @@
 'use strict';
 
-angularToDoApp.factory('Profile', function ($window, FBURL, $firebase, Post, $q) {
-  var ref = new $window.Firebase(FBURL);
+app.factory('Profile', function ($window, FIREBASE_URL, $firebase, Post, $q) {
+  var ref = new $window.Firebase(FIREBASE_URL);
 
   var profile = {
     get: function (userId) {
