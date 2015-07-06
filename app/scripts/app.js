@@ -1,6 +1,6 @@
 'use strict';
 
-var angularToDoApp = angular.module('angularToDoApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ui.router', 'ngSanitize', 'ngTouch', 'ui.sortable',
+var angularToDoApp = angular.module('angularToDoApp', ['ngAnimate', 'ngMaterial', 'ngCookies', 'ngResource', 'ui.router', 'ngSanitize', 'ngTouch', 'ui.sortable',
       "firebase"])
 
 

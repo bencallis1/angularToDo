@@ -2,7 +2,7 @@
 
 
 angularToDoApp.controller('DashboardCtrl', function ($scope, $location, $firebaseArray) {
-      console.log("In DashBoard Ctrl")
+
       //firebase Constant URL
       var url ="https://anotherthingtodo.firebaseio.com/todos";
       var fireRef = new Firebase(url);
@@ -11,6 +11,8 @@ angularToDoApp.controller('DashboardCtrl', function ($scope, $location, $firebas
       $scope.todos = $firebaseArray(fireRef);
       $scope.newTodo = '';
       $scope.editedTodo = null;
+
+
 
       $scope.$watch('todos', function () {
         var total = 0;
