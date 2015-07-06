@@ -11,7 +11,7 @@
  * Main module of the application.
  */
 var app = angular
-  .module('angNewsApp', [
+  .module('angularTodo', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
